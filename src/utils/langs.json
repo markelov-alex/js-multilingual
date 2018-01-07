@@ -1,0 +1,9 @@
+[
+  {"text": "English", "value": "en"},
+  {"text": "Русский", "value": "ru"},
+  {"text": "Deutsch", "value": "de"},
+  {"text": "Francais", "value": "fr"},
+  {"text": "Espaniol", "value": "es"},
+  {"text": "Latin", "value": "la"},
+  {"text": "Ancient Greek", "value": "grc"}
+]
