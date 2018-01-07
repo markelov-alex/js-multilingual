@@ -10,6 +10,7 @@
     </span>
     <span><a href="#" @click.prevent="exportAll">Export All</a></span>
     <span><router-link :to="$route.path + '?_=' + (new Date).getTime()">Refresh</router-link></span>
+    <span v-if="!isProduction"><a href="#" @click.prevent="clearLocalStorage">(Reset storage)</a></span>
     <br>
     <SwitchMode></SwitchMode>
     <br>
@@ -19,18 +20,20 @@
 </template>
 
 <script>
-  import { mapState } from 'vuex'
+  import { mapState, mapMutations, mapGetters } from 'vuex'
 
   import SwitchMode from './SwitchMode'
 
   export default {
     computed: {
+      ...mapGetters(['isProduction']),
       ...mapState(['globalErrorMessage'])
     },
     components: {
       SwitchMode
     },
     methods: {
+      ...mapMutations(['clearLocalStorage']),
       getProjects () {
         this.$store.dispatch('projects/getItems')
       },

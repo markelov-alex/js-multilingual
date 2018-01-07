@@ -20,8 +20,6 @@
             @click="duplicateItem">Duplicate</button>
     <button type="button" class="btn btn-outline-primary btn-sm"
             v-if="userCanEdit" @click="deleteItem">Delete</button>
-    <button type="button" class="btn btn-outline-primary btn-sm"
-            v-if="!isProduction" @click="clearLocalStorage">(Reset storage)</button>
 
     <div v-if="editing">
       <br>
@@ -60,7 +58,7 @@
 </template>
 
 <script>
-  import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
+  import { mapState, mapActions, mapGetters } from 'vuex'
   // import _ from 'lodash'
 
   import LangUtil from '@/utils/LangUtil'
@@ -73,7 +71,6 @@
     props: ['project'],
     computed: {
       ...mapState(['isDesktopMode']),
-      ...mapGetters(['isProduction']),
       ...mapGetters('projects', ['userCanEdit', 'isDocumentShownIn']),
       ...mapGetters('documents', ['documentsForProject']),
       authorName () {
@@ -117,7 +114,6 @@
       }
     },
     methods: {
-      ...mapMutations(['clearLocalStorage']),
       ...mapActions('projects', ['toggleShowDocument', 'toggleEditing',
         'exportToFile', 'save', 'cancel', 'update']),
 

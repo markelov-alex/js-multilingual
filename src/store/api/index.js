@@ -10,9 +10,8 @@ import resource from './resource'
 // console.log('API CONFIG:', config)
 Vue.use(VueResource)
 
-if (config.webSyncEnabled) {
-  Vue.http.options.root = config.apiBaseURL
-}
+Vue.http.options.root = config.apiBaseURL
+
 // console.log('API CONFIG:', config)
 
 /**
